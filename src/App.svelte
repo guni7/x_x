@@ -11,6 +11,7 @@
   onMount(async () => {
     let rpcUrl = $store.settings[$store.network].rpcUrl;
     const rpcClient = new RpcClient(rpcUrl);
+    // @ts-ignore
     Tezos = new TezosToolkit(rpcClient);
     Tezos.setPackerProvider(new MichelCodecPacker());
     //Tezos.addExtension(new Tzip16Module());
@@ -21,7 +22,13 @@
 </script>
 
 <main>
-  <div>
+  <div class="flex items-center justify-end flex-wrap bg-yellow-200 p-6">
     <Header />
   </div>
 </main>
+
+<style lang="postcss" global>
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+</style>
