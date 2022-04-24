@@ -2,7 +2,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 const sveltePreprocess = require("svelte-preprocess");
 const webpack = require("webpack");
-
+const tailwindcss = require("tailwindcss");
+const autoprefixer = require("autoprefixer");
 const mode = process.env.NODE_ENV || "development";
 const prod = mode === "production";
 
@@ -49,7 +50,9 @@ module.exports = {
             },
             emitCss: prod,
             hotReload: !prod,
-            preprocess: sveltePreprocess({ sourceMap: !prod })
+            preprocess: sveltePreprocess({ sourceMap: !prod, postcss: {
+              plugins: [tailwindcss, autoprefixer],
+            } })
           }
         }
       },

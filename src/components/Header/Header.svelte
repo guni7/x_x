@@ -92,10 +92,9 @@
   <div>
     {#if $store.userAddress}
       <div>
-        <button class="primary" on:click={disconnect}>
+        <button class="border" on:click={disconnect}>
           <img
             src={`https://services.tzkt.io/v1/avatars/${$store.userAddress}`}
-            style="width: 30px;height:30px"
             alt="user-avatar"
           />
           &nbsp; {username}
@@ -105,9 +104,9 @@
       </div>
     {/if}
   </div>
-  <div>
+  <div class="">
     {#if !$store.userAddress}
-      <button on:click={connect}> Connect </button>
+      <button class= "px-4 py-1 text-md text-purple-600 font-semibold rounded-full border border-purple-400 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2" on:click={connect}> Connect </button>
     {/if}
   </div>
 </header>
