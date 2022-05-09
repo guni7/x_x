@@ -28,7 +28,9 @@
       },
     },
   };
+
   let username = "";
+
   const connect = async () => {
     let wallet;
     if ($store.wallet) {
@@ -47,6 +49,7 @@
       $store.Tezos.setWalletProvider(wallet);
       const userAddress = await wallet.getPKH();
       store.updateUserAddress(userAddress);
+      console.log($store.userAddress);
       username = userAddress; // shortenHash(userAddress);
       username = await fetchTezosDomain($store.Tezos, userAddress);
       console.log($store);
@@ -61,7 +64,6 @@
     store.updateUserAddress(undefined);
   };
 
-
   onMount(async () => {
     // initializes the wallet
     const wallet = new BeaconWallet(walletOptions as any);
@@ -75,11 +77,12 @@
 
       username = userAddress; // shortenHash(userAddress);
       username = await fetchTezosDomain($store.Tezos, userAddress);
-
+      const balance = await $store.Tezos.tz.getBalance(userAddress);
+      store.updateTezBalance(balance.toNumber());
       setInterval(async () => {
         const balance = await $store.Tezos.tz.getBalance(userAddress);
         store.updateTezBalance(balance.toNumber());
-        console.log(balance);
+
       }, 10000);
     } else {
       console.log("no active account ");
@@ -92,21 +95,25 @@
   <div>
     {#if $store.userAddress}
       <div>
-        <button class="border" on:click={disconnect}>
-          <img
-            src={`https://services.tzkt.io/v1/avatars/${$store.userAddress}`}
-            alt="user-avatar"
-          />
+        <span> account_balance </span>
+        <button
+          class="px-4 py-1 text-md text-purple-600 font-semibold rounded-full border border-purple-400 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2"
+          on:click={disconnect}
+        >
           &nbsp; {username}
         </button>
-        <span> account_balance </span>
         &nbsp;
       </div>
     {/if}
   </div>
   <div class="">
     {#if !$store.userAddress}
-      <button class= "px-4 py-1 text-md text-purple-600 font-semibold rounded-full border border-purple-400 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2" on:click={connect}> Connect </button>
+      <button
+        class="px-4 py-1 text-md text-purple-600 font-semibold rounded-full border border-purple-400 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2"
+        on:click={connect}
+      >
+        Connect
+      </button>
     {/if}
   </div>
 </header>

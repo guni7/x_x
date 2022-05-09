@@ -5,6 +5,11 @@
   import { Tzip16Module } from "@taquito/tzip16";
   import Header from "./components/Header/Header.svelte";
   import store from "./store";
+  import UserAssets from "./components/UserAssets/UserAssets.svelte";
+  import TokenDistribution from './components/TokenDistribution/TokenDistribution.svelte';
+  import { Router, Route, Link } from "svelte-navigator";
+
+  import routes from "./routes";
 
   let Tezos: TezosToolkit;
 
@@ -17,15 +22,27 @@
     //Tezos.addExtension(new Tzip16Module());
     store.updateTezos(Tezos);
     console.info(`Connected to ${rpcUrl}`);
-    console.log($store);
   });
 </script>
 
-<main>
-  <div class="flex items-center justify-end flex-wrap bg-yellow-200 p-6">
-    <Header />
-  </div>
-</main>
+<Router>
+  <main>
+    <div class="flex items-center justify-end p-6">
+      <Header />
+    </div>
+    <div class="h-screen bg-red-200">
+      <Route path="/">
+        <UserAssets />
+      </Route>
+    </div>
+    <div class="h-screen bg-red-200">
+      <Route path="/token">
+        <TokenDistribution />
+      </Route>
+    </div>
+  </main>
+</Router>
+
 
 <style lang="postcss" global>
   @tailwind base;

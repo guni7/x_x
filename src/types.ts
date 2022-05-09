@@ -110,7 +110,7 @@ export interface State {
     };
   };
   tokens: { [p in AvailableToken]: TokenContract } | undefined;
-  tokensBalances: { [p in AvailableToken]: number } | undefined;
+  tokensBalances: TokenBalanceInfo[];
   lastOperations: Operation[];
   xtzData: {
     exchangeRate: undefined;
@@ -122,3 +122,50 @@ export interface State {
   defiData: string;
   blurryBalances: boolean;
 }
+
+export interface TokenBalanceInfo {
+  balance: number;
+  decimals: number;
+  icon: string;
+  name: string;
+  symbol: string;
+  type: string
+}
+
+
+
+export interface TokenDistribution {
+  beneficiaryAddress: TezosAccountAddress | TezosContractAddress ;
+  percentage : number; 
+}
+
+// smart contract storage
+
+interface User {
+  address: TezosAccountAddress;
+  tokenAssets: UserTokenAsset;
+  triggerSwitchAt: number;
+}
+
+interface UserTokenAsset {
+  assetId: string;
+  tokenDetails: TokenDetails;
+  uncapped    : boolean 
+}
+
+interface TokenDetails {
+  type?: "fa1.2" | "fa2";
+  address: TezosContractAddress;
+  decimals: number;
+  distribution: [AssetDistribution];
+}
+interface AssetDistribution {
+  beneficiary: TezosAccountAddress,
+  percentage: number; 
+}
+
+// entrypoints 
+// update tokenDetails 
+// update trigger time at 
+// read storage
+// transfer

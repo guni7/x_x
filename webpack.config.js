@@ -92,6 +92,9 @@ module.exports = {
   ],
   devtool: prod ? false : "source-map",
   devServer: {
+    historyApiFallback: {
+      index: path.join(__dirname, 'public'),
+    },
     hot: true,
     port: 8081
   }

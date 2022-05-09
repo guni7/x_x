@@ -1,5 +1,6 @@
 import type { TezosToolkit } from "@taquito/taquito";
 import { bytes2Char } from "@taquito/utils";
+import type { AvailableToken, TezosAccountAddress, TokenBalanceInfo } from "./types";
 
 export const fetchTezosDomain = async (
   Tezos: TezosToolkit,
@@ -25,49 +26,26 @@ export const fetchTezosDomain = async (
   }
 };
 
-//export const fetchUserBalances = async (favoriteTokens: AvailableToken[]) => {
-//  const localStore = get(store);
-//
-//  const tokensWithBalanceReq = await fetch(
-//    `https://api.tzkt.io/v1/tokens/balances?account=${localStore.userAddress}&balance.gt=1`
-//  );
-//  if (tokensWithBalanceReq) {
-//    const tokensWithBalance = await tokensWithBalanceReq.json();
-//    const availableTokenAddresses = Object.values(localStore.tokens).map(
-//      (tk) => tk.address
-//    );
-//    let newBalances = {};
-//    favoriteTokens.forEach((tk) => (newBalances[tk] = undefined));
-//
-//    tokensWithBalance
-//      .filter((el) =>
-//        availableTokenAddresses.includes(el.token.contract.address)
-//      )
-//      .map((el) => [
-//        el.token.contract.address,
-//        el.token.standard === "fa2" ? +el.token.tokenId : null,
-//        +el.balance,
-//      ])
-//      .forEach(([tokenAddress, tokenId, tokenBalance]) => {
-//        const token = Object.entries(localStore.tokens).find(([_, tokenInfo]) =>
-//          tokenId
-//            ? tokenInfo.address === tokenAddress &&
-//              tokenInfo.tokenId === tokenId
-//            : tokenInfo.address === tokenAddress
-//        );
-//        if (
-//          token &&
-//          (tokenBalance / 10 ** localStore.tokens[token[0]].decimals >
-//            0.00001 ||
-//            ["tzBTC", "BTCtz", "uBTC", "wWBTC"].includes(token[0]))
-//        ) {
-//          newBalances[token[0]] =
-//            +tokenBalance / 10 ** localStore.tokens[token[0]].decimals;
-//        }
-//      });
-//
-//    return newBalances;
-//  } else {
-//    return null;
-//  }
-//};
+export const fetchUserBalances = async (address: TezosAccountAddress): Promise<TokenBalanceInfo[]> => {
+  //const localStore = get(store);
+
+  console.log(address);
+  const tokensWithBalanceReq = await fetch(
+    `https://api.tzkt.io/v1/tokens/balances?account=${address}&balance.gt=1`
+  );
+  if (tokensWithBalanceReq) {
+    const tokensWithBalance = await tokensWithBalanceReq.json();
+    console.log(tokensWithBalance);
+    return tokensWithBalance.map((tokenData) => ({
+      id: tokenData.id,
+      balance: tokenData.balance,
+      decimals: tokenData.token.metadata.decimals,
+      icon: tokenData.token.metadata.icon,
+      name: tokenData.token.metadata.name,
+      symbol: tokenData.token.metadata.symbol,
+      type: tokenData.token.standard.toUpperCase()
+    }));
+  } else {
+    return null;
+  }
+};
