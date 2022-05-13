@@ -1,51 +1,57 @@
 {
-  "name": "",
-  "version": "1.0.0",
-  "devDependencies": {
-    "@tsconfig/svelte": "^1.0.10",
-    "@types/node": "^14.14.33",
-    "autoprefixer": "^10.4.5",
-    "buffer": "^5.7.1",
-    "cross-env": "^7.0.3",
-    "crypto-browserify": "^3.12.0",
-    "css-loader": "^5.1.2",
-    "events": "^3.3.0",
-    "https-browserify": "^1.0.0",
-    "mini-css-extract-plugin": "^1.3.9",
-    "node-sass": "^7.0.1",
-    "os-browserify": "^0.3.0",
-    "path-browserify": "^1.0.1",
-    "postcss-loader": "^5.2.0",
-    "sass-loader": "^11.0.1",
-    "stream-browserify": "^3.0.0",
-    "stream-http": "^3.1.1",
-    "style-loader": "^2.0.0",
-    "svelte": "^3.35.0",
-    "svelte-check": "^1.2.5",
-    "svelte-loader": "^3.0.0",
-    "svelte-preprocess": "^4.6.9",
-    "tailwindcss": "^3.0.24",
-    "ts-loader": "^8.0.18",
-    "tslib": "^2.1.0",
-    "typescript": "^4.2.3",
-    "webpack": "^5.24.4",
-    "webpack-cli": "^4.5.0",
-    "webpack-dev-server": "^3.11.2"
+  "name": "x_x",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@airgap/beacon-sdk": "^2.3.5",
+    "@craco/craco": "^6.4.0",
+    "@reduxjs/toolkit": "^1.6.2",
+    "@taquito/beacon-wallet": "^10.2.1",
+    "@taquito/taquito": "^10.2.1",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^12.0.0",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "autoprefixer": "^9",
+    "postcss": "^7",
+    "rc-slider": "^10.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.6",
+    "react-scripts": "4.0.3",
+    "redux": "^4.1.2",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
+    "typescript": "^4.1.2",
+    "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack",
-    "dev": "webpack serve --content-base public",
-    "validate": "svelte-check"
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "react-scripts eject"
   },
-  "dependencies": {
-    "@quipuswap/sdk": "^2.0.0",
-    "@taquito/beacon-wallet": "^8.0.6-beta.0",
-    "@taquito/rpc": "^12.0.3",
-    "@taquito/taquito": "^8.0.6-beta.0",
-    "@taquito/tzip16": "^12.0.3",
-    "@taquito/utils": "^8.1.1",
-    "file-loader": "^6.2.0",
-    "postcss": "^8.4.12",
-    "worker-loader": "^3.0.8"
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "yarn-upgrade-all": "^0.7.1"
   }
 }
