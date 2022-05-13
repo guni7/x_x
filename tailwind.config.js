@@ -1,7 +1,14 @@
 module.exports = {
-  content: ['./public/index.html', './src/**/*.svelte'],
+  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
+  darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
+  },
+  variants: {
+    extend: {
+      backgroundColor: ["checked"],
+      borderColor: ["checked"]
+    },
   },
   plugins: [],
 }
