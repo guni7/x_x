@@ -1,14 +1,14 @@
-import { useDispatch, useSelector } from "react-redux";
-import { selectUserAddress, selectWallet, selectUserBalance } from "../../features/tezos/selectors";
-import { setUserAddress, setUserBalance, setPublicToken, setWallet, setBeaconConnection, setTezos} from "../../features/tezos/slice";
 import { TezosToolkit } from "@taquito/taquito";
+import { useDispatch, useSelector } from "react-redux";
+import { selectUserAddress, selectWallet } from "../../features/tezos/selectors";
+import { setBeaconConnection, setPublicToken, setTezos, setUserAddress, setUserBalance, setWallet } from "../../features/tezos/slice";
 
 const DisconnectButton = () => {
 
     const dispatch = useDispatch();
     const wallet = useSelector(selectWallet);
     const userAddress = useSelector(selectUserAddress);
-    const balance = useSelector(selectUserBalance);
+    //const balance = useSelector(selectUserBalance);
     const disconnectWallet = async () => {
 
         dispatch(setUserAddress(""));

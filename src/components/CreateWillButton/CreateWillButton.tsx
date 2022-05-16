@@ -1,8 +1,5 @@
-import { selectContractAddress, selectTezos, selectTokenBalances, selectTokenDistribution, selectUserAddress, selectUserProfile } from "../../features/tezos/selectors";
-import { useSelector, useDispatch } from "react-redux";
-import { MichelsonMap } from "@taquito/taquito";
-import { Record, Address, List, Nat, Timestamp, String, Bool } from '@tezwell/michelson-sdk/literal';
-import { IValue } from "@tezwell/michelson-sdk/typings";
+import { useDispatch, useSelector } from "react-redux";
+import { selectContractAddress, selectTezos, selectTokenBalances, selectTokenDistribution } from "../../features/tezos/selectors";
 import { setStorage } from "../../features/tezos/slice";
 
 const CreateWillButton = () => {
@@ -10,38 +7,36 @@ const CreateWillButton = () => {
     const dispatch = useDispatch();
     const distribution = useSelector(selectTokenDistribution);
     const tokenBalances = useSelector(selectTokenBalances);
-    const userProfile = useSelector(selectUserProfile)
-    const userAddress = useSelector(selectUserAddress);
     const Tezos = useSelector(selectTezos);
     const contractAddress = useSelector(selectContractAddress);
 
     const createOrUpdateWill = async () => {
 
 
-        const token_asset_list: IValue[] = distribution?.map(distrib => {
-            const token = tokenBalances.find(tkBal => tkBal.symbol === distrib.tokenSymbol);
-            if (!token) return;
-            const distributionList = distrib.distribution.map(dis => {
-                const michelsonDistribution = Record({
-                    beneficiary_address: Address(dis.address),
-                    percentage: Nat(dis.percentage)
-                })
-                return michelsonDistribution;
-            });
-            console.log(token.balance)
-            const michelson_token = Record({
-                asset_id: String(token.id), // change to id,
-                token_details: Record({
-                    token_type: String(token.type),
-                    is_fungible: Bool(false),
-                    address: Address(token.address),
-                    decimals: Nat(token.decimals), // remove this 
-                    amount: Nat(100),
-                    distribution_list: List(distributionList)
-                })
-            });
-            return michelson_token;
-        }) as IValue[]
+       // const token_asset_list: IValue[] = distribution?.map(distrib => {
+       //     const token = tokenBalances.find(tkBal => tkBal.symbol === distrib.tokenSymbol);
+       //     if (!token) return;
+       //     const distributionList = distrib.distribution.map(dis => {
+       //         const michelsonDistribution = Record({
+       //             beneficiary_address: Address(dis.address),
+       //             percentage: Nat(dis.percentage)
+       //         })
+       //         return michelsonDistribution;
+       //     });
+       //     console.log(token.balance)
+       //     const michelson_token = Record({
+       //         asset_id: String(token.id), // change to id,
+       //         token_details: Record({
+       //             token_type: String(token.type),
+       //             is_fungible: Bool(false),
+       //             address: Address(token.address),
+       //             decimals: Nat(token.decimals), // remove this 
+       //             amount: Nat(100),
+       //             distribution_list: List(distributionList)
+       //         })
+       //     });
+       //     return michelson_token;
+       // }) as IValue[]
 
         if (!distribution) return;
         const token_asset_list2: any[] = distribution?.map(distrib => {

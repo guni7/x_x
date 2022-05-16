@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectContractAddress, selectTezos, selectTokenBalances, selectTokenDistribution, selectUserAddress } from '../../features/tezos/selectors';
 import { setTokenDistribution } from '../../features/tezos/slice';
 import { AvailableToken, Beneficiary as BeneficiaryType, TokenDistribution } from '../../types';

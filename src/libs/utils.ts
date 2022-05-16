@@ -1,4 +1,3 @@
-import TokenAsset from "../components/TokenAsset";
 import { AvailableToken, TezosAccountAddress, TokenBalanceInfo } from "../types";
 
 export const fetchUserBalances = async (address: TezosAccountAddress): Promise<TokenBalanceInfo[] | null> => {
