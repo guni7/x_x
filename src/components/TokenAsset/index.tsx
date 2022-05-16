@@ -1,8 +1,7 @@
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { selectSelectedToken, selectTokenDistribution } from '../../features/tezos/selectors';
-import { setSelectedToken, setSelectedTokenDistribution } from '../../features/tezos/slice';
-import { AvailableToken, TokenBalanceInfo } from '../../types';
+import { TokenBalanceInfo } from '../../types';
 type Props = {
     tokenBalance: TokenBalanceInfo;
 };

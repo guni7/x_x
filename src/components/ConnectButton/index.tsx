@@ -1,30 +1,22 @@
-import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  selectTezos,
-  selectWallet,
-  selectContractAddress,
-} from "../../features/tezos/selectors";
-import {
-  setUserAddress,
-  setUserBalance,
-  setBeaconConnection,
-  setTokenBalances,
-  setStorage,
-  setPublicToken,
-  setWallet,
-  setUserProfile,
-  setContract,
-} from "../../features/tezos/slice";
 import {
   BeaconEvent,
   defaultEventCallbacks,
-  NetworkType,
+  NetworkType
 } from "@airgap/beacon-sdk";
-
 import { BeaconWallet } from "@taquito/beacon-wallet";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectTezos,
+  selectWallet
+} from "../../features/tezos/selectors";
+import {
+  setBeaconConnection, setContract, setPublicToken, setStorage, setTokenBalances, setUserAddress,
+  setUserBalance, setUserProfile, setWallet
+} from "../../features/tezos/slice";
 import { fetchUserBalances } from "../../libs/utils";
-import { AvailableToken, TezosAccountAddress, TokenBalanceInfo, UserProfile } from "../../types";
+import { TezosAccountAddress, UserProfile } from "../../types";
+
 
 const ConnectButton = (): JSX.Element => {
   const dispatch = useDispatch();
@@ -59,7 +51,7 @@ const ConnectButton = (): JSX.Element => {
 
     const storage: any = await contract.storage();
     dispatch(setStorage(storage));
-    
+
     const userProfile = await storage['users'].get(userAddress) as UserProfile;
     console.log('userP', userProfile)
     dispatch(setUserProfile(userProfile))
@@ -127,7 +119,4 @@ const ConnectButton = (): JSX.Element => {
 };
 
 export default ConnectButton;
-function setContractAddress(arg0: string): any {
-  throw new Error("Function not implemented.");
-}
 

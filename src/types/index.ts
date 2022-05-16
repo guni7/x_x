@@ -1,5 +1,5 @@
-import type { TezosToolkit, WalletOperation } from "@taquito/taquito";
 import type { BeaconWallet } from "@taquito/beacon-wallet";
+import type { TezosToolkit } from "@taquito/taquito";
 
 export type TezosAccountAddress = `tz${"1" | "2" | "3"}${string}`;
 export type TezosContractAddress = `KT1${string}`;
