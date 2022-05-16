@@ -29,14 +29,14 @@ export const initialState: TezosState = {
     userBalance: 0,
     storage: null,
     beaconConnection: false,
-    contractAddress: "KT1Dqf7SEVMjJ8xNvWEuQmn2ffiWoFc9bkkZ",
+    contractAddress: "KT19xorVBYtEy5sofm6HTJsP219MtzpybEtu",
     publicToken: "",
     tokens: undefined,
     tokenBalances: [],
     selectedToken: null,
     selectedTokenDistribution: null,
     tokenDistribution: undefined,
-    userProfile: null
+    userProfile: null,
 }
 
 const tezosSlice = createSlice({

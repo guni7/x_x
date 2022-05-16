@@ -16,7 +16,7 @@ const TokenAsset = ({ tokenBalance }: Props) => {
         <div className="flex p-3 ml-12" >
             <div className="flex group h-48 w-1/4">
                 <div
-                    className={`${tokenBalance.symbol === selectedToken ? "bg-white-300 ml-4 flex items-end h-full transition-transform transform border-2 border-blue-600 group-hover:-translate-x-2 group-hover:-translate-y-2 rounded-lg" : "bg-blue-100 flex items-end h-full transition-transform transform border-2 border-black-200 group-hover:-translate-x-2 group-hover:-translate-y-2 rounded-lg"}`}
+                    className={`${tokenBalance.symbol === selectedToken ? "animate-pulse shadow-lg  ml-4 flex items-end h-full transition-transform transform border-4 border-pink-500 group-hover:-translate-x-2 group-hover:-translate-y-2 rounded-lg" : "flex items-end h-full transition-transform transform border-2 border-pink-500 shadow-md group-hover:-translate-x-2 group-hover:-translate-y-2 rounded-lg"}`}
                 >
                 <span className="absolute right-4 top-4 rounded-full px-3 py-1.5 bg-green-100 text-green-600 font-medium text-xs">
                     {tokenBalance.type}

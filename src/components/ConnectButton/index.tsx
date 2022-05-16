@@ -14,6 +14,7 @@ import {
   setPublicToken,
   setWallet,
   setUserProfile,
+  setContract,
 } from "../../features/tezos/slice";
 import {
   BeaconEvent,
@@ -40,6 +41,7 @@ const ConnectButton = (): JSX.Element => {
     dispatch(setUserBalance(balance.toNumber()));
 
     const tokenBalances = await fetchUserBalances(userAddress)
+    console.log(tokenBalances);
     //const xtzBalance: TokenBalanceInfo = {
     //  address: "KT1",
     //  balance: balance.toNumber(),
@@ -53,10 +55,13 @@ const ConnectButton = (): JSX.Element => {
     //tokenBalances?.push(xtzBalance);
     dispatch(setTokenBalances(tokenBalances));
     const contract = await Tezos.wallet.at('KT19xorVBYtEy5sofm6HTJsP219MtzpybEtu');
+    dispatch(setContract(contract));
+
     const storage: any = await contract.storage();
     dispatch(setStorage(storage));
     
     const userProfile = await storage['users'].get(userAddress) as UserProfile;
+    console.log('userP', userProfile)
     dispatch(setUserProfile(userProfile))
   };
 
@@ -122,3 +127,7 @@ const ConnectButton = (): JSX.Element => {
 };
 
 export default ConnectButton;
+function setContractAddress(arg0: string): any {
+  throw new Error("Function not implemented.");
+}
+

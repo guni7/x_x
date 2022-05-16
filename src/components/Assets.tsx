@@ -31,24 +31,45 @@ const Assets = () => {
     }
     return (
         <div className='w-full h-screen bg-yellow-100 '>
-            <div className='flex flex-col h-full w-1/3 float-left border-r-2 border-gray overflow-y-scroll'>
+            <div className='flex flex-col h-full w-1/3 float-left border-blue-400 overflow-y-scroll'>
                 {
                     userTokenBalances.map(tokenBalance => {
                         return (
                             <div key={tokenBalance.symbol} className={`flex flex-col`} onClick={() => handleTokenAssetClick(tokenBalance.symbol)}>
                                 <div>
-                                    <TokenAsset  tokenBalance={tokenBalance} />
+                                    <TokenAsset tokenBalance={tokenBalance} />
                                 </div>
                             </div>
                         )
                     })
                 }
             </div>
-            <div className='flex w-2/3  float-right bg-red-200 overflow-scroll'>
+            <div className='flex w-2/3 h-full float-right '>
                 {selectedToken ?
-                    <Distribution token={token as AvailableToken} beneficiaries={beneficiaries} setBeneficiaries={setBeneficiaries} />
+                    <div className="p-1 m-8 overflow-scroll w-full shadow-xl bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 rounded-2xl">
+                        <a className="block h-full p-6 bg-yellow-100 rounded-xl " >
+                            <div className="mt-16 ">
+                                <Distribution token={token as AvailableToken} beneficiaries={beneficiaries} setBeneficiaries={setBeneficiaries} />
+                            </div>
+                        </a>
+                    </div>
+
                     :
-                    <></>
+
+                    <div className="p-1 m-8 overflow-scroll w-full shadow-xl bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 rounded-2xl">
+                        <div className="block h-full p-6 bg-yellow-100 rounded-xl " >
+                            <div className="mt-24 ">
+                                <aside className="p-12">
+                                    <div className="max-w-xl mx-auto text-center">
+
+                                        <p className="mt-2 text-3xl font-bold sm:text-5xl">
+                                            Select an asset to start
+                                        </p>
+                                    </div>
+                                </aside>
+                            </div>
+                        </div>
+                    </div>
                 }
             </div>
         </div>
