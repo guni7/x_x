@@ -126,6 +126,7 @@ export interface State {
 }
 
 export interface TokenBalanceInfo {
+  id: string;
   address: TezosContractAddress,
   balance: number;
   decimals: number;
