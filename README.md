@@ -1,6 +1,25 @@
 # The contracts for this project can be found here 
   https://github.com/guni7/x_x-contracts
 
+# About the project - 
+
+This dapp allows you to create a smart contract based will for your crypto assets.
+
+It currently supports FA1.2 tokens. 
+  
+The smart contract has 3 entrypoints.
+ 1) create user
+ This is used to create and update a user's profile. A user's profile contains details about the assets that the user owns and their distribution details.
+
+ 2) update trigger 
+ This is used to reset the dead man's switch by 6 months (1 day for test accounts)
+ 
+ 3) run transfers 
+ This is used to execute transfers to beneficiary accounts when the switch is triggered. This is triggered once everyday from a server.
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
