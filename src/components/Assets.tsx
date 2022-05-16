@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectSelectedToken, selectTokenBalances, selectTokenDistribution } from '../features/tezos/selectors';
 import { setSelectedToken } from '../features/tezos/slice';
@@ -47,11 +47,11 @@ const Assets = () => {
             <div className='flex w-2/3 h-full float-right '>
                 {selectedToken ?
                     <div className="p-1 m-8 overflow-scroll w-full shadow-xl bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 rounded-2xl">
-                        <a className="block h-full p-6 bg-yellow-100 rounded-xl " >
+                        <div className="block h-full p-6 bg-yellow-100 rounded-xl " >
                             <div className="mt-16 ">
                                 <Distribution token={token as AvailableToken} beneficiaries={beneficiaries} setBeneficiaries={setBeneficiaries} />
                             </div>
-                        </a>
+                        </div>
                     </div>
 
                     :

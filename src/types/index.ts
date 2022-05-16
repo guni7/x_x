@@ -160,7 +160,7 @@ export interface UserProfile {
 //}
 
 // smart contract storage
-
+// eslint-disable-next-line 
 interface User {
   address: TezosAccountAddress;
   tokenAssets: UserTokenAsset;

@@ -107,8 +107,10 @@ const Distribution = ({ token, beneficiaries, setBeneficiaries }: Props) => {
             setLoading(false);
         };
         if (currentToken) {
+            // eslint-disable-next-line
             const tokenContract = getTokenContract(currentToken?.address);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentToken]);
     return (
         <div className='flex h-full -mt-20'>

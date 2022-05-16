@@ -41,6 +41,7 @@ const CreateWillButton = () => {
         if (!distribution) return;
         const token_asset_list2: any[] = distribution?.map(distrib => {
             const token = tokenBalances.find(tkBal => tkBal.symbol === distrib.tokenSymbol);
+            // eslint-disable-next-line
             if (!token) return;
             const distributionList = distrib.distribution.map(dis => {
                 const michelsonDistribution = {

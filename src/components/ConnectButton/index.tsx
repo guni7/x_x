@@ -102,11 +102,13 @@ const ConnectButton = (): JSX.Element => {
         dispatch(setBeaconConnection(true));
       }
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     dispatch(setPublicToken(publicTkn));
-  }, [setPublicTkn]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <button

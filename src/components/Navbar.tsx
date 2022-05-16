@@ -1,9 +1,9 @@
-import ConnectButton from './ConnectButton';
-import DisconnectButton from './DisconnectButton';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { selectBeaconConnection, selectContractAddress, selectTezos, selectUserProfile } from '../features/tezos/selectors';
+import ConnectButton from './ConnectButton';
 import CreateWillButton from './CreateWillButton/CreateWillButton';
-import { useEffect } from 'react';
+import DisconnectButton from './DisconnectButton';
 const Navbar = () => {
 
     const userProfile = useSelector(selectUserProfile)
@@ -16,7 +16,7 @@ const Navbar = () => {
         startOfDay.setUTCHours(0, 0, 0, 0);
         console.log(startOfDay.getTime())
         console.log(startOfDay)
-        const sixMonths = 15778800000;
+        //const sixMonths = 15778800000;
         const oneDay = 86400000;
         const newTime = new Date(startOfDay.getTime() + (oneDay * 2)).toISOString();
         const updateUserMethod = contract.methods.updateTriggerParam(newTime);
@@ -25,8 +25,9 @@ const Navbar = () => {
             gasLimit: 500000,
             fee: 200000
         });
-
+        // eslint-disable-next-line 
         const confirmation = await op.confirmation(3);
+
 
     }
 

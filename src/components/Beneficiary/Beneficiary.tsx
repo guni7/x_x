@@ -45,6 +45,7 @@ const Beneficiary = ({ id, beneficiaries, setBeneficiaries }: Props) => {
 
     useEffect(() => {
         setPercent(beneficiaries[id].percentage)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [beneficiaries])
 
 
