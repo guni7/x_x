@@ -14,11 +14,13 @@ The smart contract has 3 entrypoints.
  This is used to create and update a user's profile. A user's profile contains details about the assets that the user owns and their distribution details.
 
  2) update trigger 
- This is used to reset the dead man's switch by 6 months (1 day for test accounts)
+ This is used to reset the dead man's switch by 6 months (1 day for testing purposes)
  
  3) run transfers 
  This is used to execute transfers to beneficiary accounts when the switch is triggered. This is triggered once everyday from a server.
 
+NOTE- 
+This frontend is configured for Ithicanet. Some test tokens from the faucet tend to not have a "symbol" or a "same" property. This can cause problems during testing. To circumvent this, you can hardcode and associate the "id" property when tokens are fetched from tzkt to already existing tokens as done in libs/utils.ts lines 8 - 14.
 
 
 
