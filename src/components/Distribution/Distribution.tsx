@@ -71,7 +71,7 @@ const Distribution = ({ token, beneficiaries, setBeneficiaries }: Props) => {
         try {
             console.log(contractAddress);
             console.log(currentTokenContract);
-            const approveMethod = await currentTokenContract.methods.approve("KT19xorVBYtEy5sofm6HTJsP219MtzpybEtu", 100);
+            const approveMethod = await currentTokenContract.methods.approve("KT1Uh6jFAA4t2Fgp3f3xXWxnjiNoVK9iTr2i", 9000000);
             //console.log(approveMethodEstimate);
             //const { gasLimit,
             //    storageLimit,
