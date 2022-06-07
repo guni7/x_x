@@ -29,7 +29,7 @@ export const initialState: TezosState = {
     userBalance: 0,
     storage: null,
     beaconConnection: false,
-    contractAddress: "KT19xorVBYtEy5sofm6HTJsP219MtzpybEtu",
+    contractAddress: "KT1Uh6jFAA4t2Fgp3f3xXWxnjiNoVK9iTr2i",
     publicToken: "",
     tokens: undefined,
     tokenBalances: [],

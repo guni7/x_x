@@ -46,7 +46,7 @@ const ConnectButton = (): JSX.Element => {
     //}
     //tokenBalances?.push(xtzBalance);
     dispatch(setTokenBalances(tokenBalances));
-    const contract = await Tezos.wallet.at('KT19xorVBYtEy5sofm6HTJsP219MtzpybEtu');
+    const contract = await Tezos.wallet.at('KT1Uh6jFAA4t2Fgp3f3xXWxnjiNoVK9iTr2i');
     dispatch(setContract(contract));
 
     const storage: any = await contract.storage();
